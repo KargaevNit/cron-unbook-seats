@@ -21,7 +21,7 @@ const supabase = createClient(url, key);
     const rejectedPaymentsIds: any[] = [];
     payments.forEach(payment => {
         const payment_date = new Date(payment.created_at);
-        payment_date.setMinutes(payment_date.getMinutes() + 1);
+        payment_date.setMinutes(payment_date.getMinutes() + 5);
         if(payment_date < (new Date())) { rejectedPaymentsIds.push(payment.id) }
     });
 
