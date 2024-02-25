@@ -49,10 +49,9 @@ const supabase = createClient(url, key);
     const seats_res = await supabase
         .from("MovieBookingSeat")
         .select()
-        .eq("payment_id", "null");
+        .is("payment_id", null);
 
     const seats = seats_res.data;
-
     if(!seats) { return; }
 
     const deleteSeats: any[] = [];
@@ -61,7 +60,6 @@ const supabase = createClient(url, key);
         seat_date.setMinutes(seat_date.getMinutes() + timeoutSeats);
         if(seat_date < (new Date())) { deleteSeats.push(seat.id) }
     });
-
     if(deleteSeats.length === 0) { return; }
 
     await supabase
