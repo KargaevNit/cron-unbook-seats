@@ -49,7 +49,7 @@ const supabase = createClient(url, key);
     const seats_res = await supabase
         .from("MovieBookingSeat")
         .select()
-        .eq("payment_id", null);
+        .eq("payment_id", "null");
 
     const seats = seats_res.data;
 
